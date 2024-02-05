@@ -1,0 +1,55 @@
+// We need our h1 title at the top, Aligned to the left
+    // <h1 class="title">Title</h1>
+
+
+// Then a dropdown selector box labeled "Choose a governer" - Left_Aligned
+    // <article class='governers'>
+            <select>
+                <option value="Gov-1"> Gov-1 </option>
+                <option value="Gov-2"> Gov-2 </option>
+                <option value="Gov-3"> Gov-3 </option>
+            </select>
+        </article>
+
+    // Only Active governers should be displayed
+    // Each colony must have at least one active governer
+
+
+// Another dropdown selector where you 'Choose a facility' - Left_Aligned below the previous dropdown
+    // <article class='facilities'>
+            <select>
+                <option value="Fac-1"> Fac-1 </option>
+                <option value="Fac-2"> Fac-2 </option>
+                <option value="Fac-3"> Fac-3 </option>
+            </select>
+        </article>
+
+
+// Will display colony minerals to the right of the dropdowns
+    // could use <article class="mineralDisplay">
+                        <h3> #COLONY MINERALS </h3>
+                        <ul>
+                            <li> Our purchased minerals </li>
+                        </ul>
+                   </article>
+
+
+// There will be another selector section with radio buttons...
+... below the dropdown selectors... with options for the minerals sold by the facility...
+displayed on the radio buttons. All content within this section will be centered.
+    //  <article>
+            <input type='radio' id='#' name='#' value='#'/>
+            <label for='#'>:PLACEHOLDER:</label>
+            <input type='radio' id='#' name='#' value='#'/>
+            <label for='#'>:PLACEHOLDER:</label>
+            <input type='radio' id='#' name='#' value='#'/>
+            <label for='#'>:PLACEHOLDER:</label>
+        </article>
+
+
+// To the right of the previous section... Will be a 'Space Cart' Checkout section...
+... will display your selected minerals and includes a 'Purchase Mineral' button.
+    //  <article class='space-cart'>
+            <h3>SPACE CART</h3>
+            <button type='button'> PURCHASE MINERAL </button>
+        </article>
