@@ -11,7 +11,7 @@ const database = {
     { id: 9, Colony: "Earth", purchasedMinerals: [] },
     { id: 10, Colony: "Alpha Centauri Bb", purchasedMinerals: [] },
   ],
-  AvailableMinieral: [
+  AvailableMineral: [
     { id: 1, type: "Quartz", amount: 10, facilityId: 5 },
     { id: 2, type: "Feldspar", amount: 90, facilityId: 7 },
     { id: 3, type: "Iron", amount: 30, facilityId: 1 },
@@ -53,14 +53,14 @@ const database = {
   Governers: [
     { id: 1, name: "Alice Johnson", ColonyId: 8, isActive: true },
     { id: 2, name: "Benjamin Martinez", ColonyId: 3, isActive: true },
-    { id: 3, name: "Chloe Davis", ColonyId: 6, isActive: true },
+    { id: 3, name: "Chloe Davis", ColonyId: 6, isActive: false },
     { id: 4, name: "Daniel Turner", ColonyId: 1, isActive: true },
     { id: 5, name: "Emily Rodriguez", ColonyId: 9, isActive: true },
-    { id: 6, name: "Finn Campbell", ColonyId: 2, isActive: true },
+    { id: 6, name: "Finn Campbell", ColonyId: 2, isActive: false },
     { id: 7, name: "Grace Thompson", ColonyId: 7, isActive: true },
     { id: 8, name: "Henry Carter", ColonyId: 4, isActive: true },
     { id: 9, name: "Isabella Murphy", ColonyId: 10, isActive: true },
-    { id: 10, name: "Jack Foster", ColonyId: 5, isActive: true },
+    { id: 10, name: "Jack Foster", ColonyId: 5, isActive: false },
     { id: 11, name: "Lily Powell", ColonyId: 8, isActive: true },
     { id: 12, name: "Mason Harris", ColonyId: 2, isActive: true },
     { id: 13, name: "Nora Russell", ColonyId: 6, isActive: true },
@@ -69,7 +69,7 @@ const database = {
     { id: 16, name: "Quinn Peterson", ColonyId: 1, isActive: true },
     { id: 17, name: "Riley Kelly", ColonyId: 7, isActive: true },
     { id: 18, name: "Sophia Cooper", ColonyId: 4, isActive: true },
-    { id: 19, name: "Thomas Reed", ColonyId: 10, isActive: true },
+    { id: 19, name: "Thomas Reed", ColonyId: 10, isActive: false },
     { id: 20, name: "Violet Sanchez", ColonyId: 5, isActive: true },
   ],
   transientState: {},
@@ -85,4 +85,8 @@ export const getColonies = () => {
 
 export const getGoverners = () => {
   return database.Governers.map((text) => ({ ...text }));
+};
+
+export const getMinerals = () => {
+  return database.AvailableMineral.map((text) => ({ ...text }));
 };
