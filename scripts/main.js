@@ -9,7 +9,10 @@ const createPage = () => {
         <div>
             ${governorsHTML()}
             ${addMinerals()}
-        ${buildFacilityDropdown()}
+        </div>
+        <div>
+            ${buildFacilityDropdown()}
+        </div>
         </div>
         <div id="GovernersPlanet">
         Planets
