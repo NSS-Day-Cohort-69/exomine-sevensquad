@@ -12,7 +12,7 @@ const createPage = () => {
                     ${governorsHTML()}
                 </section>
                 <section>
-                    ${addMinerals()}
+                    {addMinerals()}
                 </section>
             </div>
         <div id="FacilityHTML">
@@ -20,7 +20,7 @@ const createPage = () => {
             </div>
         </div>
         <div>
-            ${buildMineralHTML()}
+            {buildMineralHTML()}
             <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
