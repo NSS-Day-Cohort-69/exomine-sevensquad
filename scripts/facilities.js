@@ -1,17 +1,15 @@
 import { getFacilities } from "./database.js";
 
-
 // Gets the list of facilities
 
 const allFacilities = getFacilities();
 
-
 //This gets a random number that is then given in the facility dropdown function
 
 const getRandomNum = () => {
-    const randomToSxThou = Math.floor(Math.random() * 6000) + 1;
-    return randomToSxThou
-}
+  const randomToSxThou = Math.floor(Math.random() * 6000) + 1;
+  return randomToSxThou;
+};
 
 /*
  Function that iterates through the Facilities array and generates the html facility dropdown
@@ -24,27 +22,27 @@ const getRandomNum = () => {
 */
 
 export const buildFacilityDropdown = () => {
-    let buildFacilityHTML = ` <label> Choose a facility: </label>
+  let buildFacilityHTML = ` <label> Choose a facility: </label>
                               <select>
-                                <option> -- Choose Facility -- </option>`
-    for (const facility of allFacilities) {
-        let randomNum = getRandomNum();
-        facility.staff = randomNum
-        if (facility.staff < 2000) {
-            facility.isActive = false
-            buildFacilityHTML += `<option disabled='true' value='${facility.name}'
+                                <option> -- Choose Facility -- </option>`;
+  for (const facility of allFacilities) {
+    let randomNum = getRandomNum();
+    facility.staff = randomNum;
+    if (facility.staff < 2000) {
+      facility.isActive = false;
+      buildFacilityHTML += `<option disabled='true' value='${facility.name}'
          data-type='facility' data-id='${facility.id}'>
-          ${facility.name} </option>`
-        } else {
-            buildFacilityHTML += `<option value='${facility.name}'
+          ${facility.name} </option>`;
+    } else {
+      buildFacilityHTML += `<option value='${facility.name}'
          data-type='facility' data-id='${facility.id}'>
-          ${facility.name} </option>`
-        }
+          ${facility.name} </option>`;
     }
-    buildFacilityHTML += `</select>`
+  }
+  buildFacilityHTML += `</select>`;
 
-    return buildFacilityHTML
-}
+  return buildFacilityHTML;
+};
 
 //   ----- PLANNING -----
 /*
