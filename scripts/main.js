@@ -1,25 +1,26 @@
-import { buildFacilityDropdown } from "./facilities";
-import { governorsHTML } from "./governors";
+import { buildFacilityDropdown } from "./facilities.js";
+import { governorsHTML } from "./governors.js";
 
 const createPage = () => {
   const documentHTML = document.querySelector(`#ContainerJS`);
   const pageHtml = `
     <div id="mainContainer">
         <div id="choicesDropdownContainer">
-        <div>
-            ${governorsHTML()}
-            ${addMinerals()}
+            <div id="peoplePlanets">
+                <section>
+                    ${governorsHTML()}
+                </section>
+                <section>
+                    ${addMinerals()}
+                </section>
+            </div>
+        <div id="FacilityHTML">
+                ${buildFacilityDropdown()}
+            </div>
         </div>
         <div>
-            ${buildFacilityDropdown()}
-        </div>
-        </div>
-        <div id="GovernersPlanet">
-        Planets
-        </div>
-        <div>
-        ${buildMineralHTML()}
-        <button>Purchases Button</button>
+            ${buildMineralHTML()}
+            <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
     `;
