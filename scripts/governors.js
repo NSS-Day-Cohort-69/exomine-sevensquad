@@ -3,9 +3,9 @@ import { getGoverners } from "./database.js";
 const governors = getGoverners();
 
 export const governorsHTML = () => {
-  let htmlString = `<label for= "governor-names">Choose a governor</label>
-  <select name="governor-names" id="governor-names">-- Choose Governor--</select>`;
+  let htmlString = `<label for= "governor-names">Choose a governor</label>`;
   htmlString += `<select name="governor-names" id="governor-names">`;
+  htmlString += `<option>--Choose Governor--</option>`;
 
   for (const governor of governors) {
     if (governor.isActive) {
