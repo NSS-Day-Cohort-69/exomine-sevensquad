@@ -64,5 +64,5 @@ export const buildFacilityDropdown = () => {
         then a function with a for of loop to iterate throught the availableMinerals.
             the loop will have an if conditional to check if availableMineral facilityID property is equal to 
             facility ID property IF SO build html for displaying radio menu options for the amount of
-            minerals. DISPLAYED AS '90 tons of Chromium'...
+            minerals. DISPLAYED AS '90 tons of Chromium'....
 */
