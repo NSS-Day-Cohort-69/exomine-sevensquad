@@ -51,7 +51,7 @@ export const buildFacilityDropdown = () => {
 /*
     There will be a section below this with an h1 saying 'Facility Minerals'
     below that will be the radio buttons yet to be mentioned
-        This section could possibly be built as so `
+        This section could possibly be built as so... `
                                                     <section class="availableMinerals">
                                                         <h1></h1>
                                                     </section>
