@@ -1,6 +1,6 @@
-import { getGovernors } from "./database.js"
+import { getGoverners } from "./database.js";
 
-const governors = getGovernors()
+const governors = getGoverners();
 
 const governorsHTML = () => {
     let htmlString = `<article id="governor-drop-down"><label for= "governor-names">Choose a governor</label>`
