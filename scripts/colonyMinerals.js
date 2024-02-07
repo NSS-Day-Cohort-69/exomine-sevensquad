@@ -1,7 +1,8 @@
-import { getPurchases, getColonies } from "./database.js";
+import { getPurchases, getColonies, getMineralTypes } from "./database.js";
 
 const colonies = getColonies();
 const purchases = getPurchases();
+const minerals = getMineralTypes();
 
 export const governorChoiceChange = (changeEvent) => {
   console.log(changeEvent);
@@ -18,9 +19,12 @@ const addMineralsHTML = (governorColonyId) => {
     if (governorColonyId === colony.id) {
       htmlString += `<h2 id="governorColony">${colony.name} Minerals</h2>`;
     }
-    // for (const purchase of purchases) {
-    //     htmlString += ``
-    // }
+    for (const allPurchases of purchases) {
+      const FilteredPurchases = [];
+      if (allPurchases.colondyId == colony.id) {
+        FilteredPurchases.push(allPurchases);
+      }
+    }
   }
   return htmlString;
 };
