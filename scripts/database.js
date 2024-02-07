@@ -81,7 +81,7 @@ const database = {
     { id: 6, name: "Caved In", isActive: true },
     { id: 7, name: "Blarf", isActive: true },
   ],
-  Governers: [
+  Governors: [
     { id: 1, name: "Alice Johnson", ColonyId: 8, isActive: true },
     { id: 2, name: "Benjamin Martinez", ColonyId: 3, isActive: true },
     { id: 3, name: "Chloe Davis", ColonyId: 6, isActive: false },
@@ -114,10 +114,18 @@ export const getColonies = () => {
   return database.Colonies.map((text) => ({ ...text }));
 };
 
-export const getGoverners = () => {
-  return database.Governers.map((text) => ({ ...text }));
+export const getGovernors = () => {
+  return database.Governors.map((text) => ({ ...text }));
 };
 
 export const getMinerals = () => {
-  return database.AvailableMineral.map((text) => ({ ...text }));
+  return database.availableMinerals.map((text) => ({ ...text }));
+};
+
+export const getMineralTypes = () => {
+  return database.MineralTypes.map((text) => ({ ...text }));
+};
+
+export const getPurchases = () => {
+  return database.purchasedMinerals.map((text) => ({ ...text }));
 };
