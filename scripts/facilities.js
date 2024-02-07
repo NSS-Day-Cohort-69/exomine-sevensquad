@@ -1,4 +1,4 @@
-import { getFacilities } from "./database.js";
+import { getFacilities, getMinerals, getMineralTypes } from "./database.js";
 
 // Gets the list of facilities
 
@@ -30,55 +30,16 @@ export const buildFacilityDropdown = () => {
     facility.staff = randomNum;
     if (facility.staff < 2000) {
       facility.isActive = false;
-      buildFacilityHTML += `<option disabled='true' value='${facility.name}'
-         data-type='facility' data-id='${facility.id}'>
+      buildFacilityHTML += `<option disabled='true' value='${facility.id}'
+         data-type='facility' data-name='${facility.name}'>
           ${facility.name} </option>`;
     } else {
-      buildFacilityHTML += `<option value='${facility.name}'
-         data-type='facility' data-id='${facility.id}'>
+      buildFacilityHTML += `<option value='${facility.id}'
+         data-type='facility' data-name='${facility.name}'>
           ${facility.name} </option>`;
     }
   }
   buildFacilityHTML += `</select>`;
 
   return buildFacilityHTML;
-};
-
-// Event Listener for when, Facilities are Changed
-document.addEventListener("change", (event) => {
-  if (event.target.name === "facility") {
-    const FacilityMineralsDocument = document.querySelector(
-      "#facilityMineralsDocument"
-    );
-    const specificFacilityNum = event.target.id;
-    let htmlForMinerals = facilityMaterialGenerator(
-      parseInt(specificFacilityNum)
-    );
-    FacilityMineralsDocument.innerHTML = htmlForMinerals;
-  }
-});
-// Function to Display every Material related to said Function
-const facilityMaterialGenerator = (facilityId) => {
-  let radioButtonHTML = ``;
-  let mineralArray = [];
-  for (const minerals of getMinerals()) {
-    if (minerals.facilityId == facilityId) {
-      mineralArray.push(minerals);
-    }
-  }
-  for (const facilitySpecificMinerals of mineralArray) {
-    for (const allMineralTypes of getMineralTypes()) {
-      if (facilitySpecificMinerals.mineralTypeId == allMineralTypes.id) {
-        radioButtonHTML += `
-          <input
-            type="radio"
-            name="facilityMaterial"
-            data-matFacId="${facilitySpecificMinerals.id}"
-            data-mineralTypeId="${allMineralTypes.id}"
-          >${facilitySpecificMinerals.amount} Tons of ${allMineralTypes.name}</input>
-        `;
-      }
-    }
-  }
-  return radioButtonHTML;
 };
