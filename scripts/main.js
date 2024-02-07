@@ -1,5 +1,8 @@
 import { buildFacilityDropdown } from "./facilities.js";
 import { governorsHTML } from "./governors.js";
+import {governorChoiceChange} from "./colonyMinerals.js"
+
+document.addEventListener("change", governorChoiceChange)
 
 const createPage = () => {
   const documentHTML = document.querySelector(`#ContainerJS`);
@@ -8,6 +11,7 @@ const createPage = () => {
     <div id="mainContainer">
         <div id="choicesDropdownContainer">
             ${governorsHTML()}
+            <article id="colonyMinerals"></article>
             ${buildFacilityDropdown()}
             <button id="purchase">Purchase Minerals!</button>
         </div>
