@@ -2,7 +2,7 @@ import { getGovernors } from "./database.js";
 
 const governors = getGovernors();
 
-const governorsHTML = () => {
+export const governorsHTML = () => {
     let htmlString = `<article id="governor-drop-down"><label for= "governor-names">Choose a governor</label>`
     htmlString += `<select type="governor" name="governor-names" id="governor-names">`
     htmlString += `<option value="" selected disabled hidden>Choose a governor...</option>`

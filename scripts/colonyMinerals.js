@@ -5,7 +5,7 @@ const purchases = getPurchases()
 
 const governorChoiceChange  = (changeEvent) => {
     if(changeEvent.target.type === "governor") {
-        const governorColonyId = changeEvent.data.colonyid
+        const governorColonyId = changeEvent.dataset.colonyid
         addMineralsHTML(parseInt(governorColonyId))
     }
 }
