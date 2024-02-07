@@ -19,7 +19,7 @@ const createPage = () => {
         </div>
     </div>
     `;
-  documentHTML.innerHTML += pageHtml;
+  documentHTML.innerHTML = pageHtml;
 };
 
 createPage();
