@@ -7,20 +7,8 @@ const createPage = () => {
   <h1>Exomine Mining Market Place</h1>
     <div id="mainContainer">
         <div id="choicesDropdownContainer">
-            <div id="peoplePlanets">
-                <section>
-                    ${governorsHTML()}
-                </section>
-                <section>
-                    {addMinerals()}
-                </section>
-            </div>
-        <div id="FacilityHTML">
-                ${buildFacilityDropdown()}
-            </div>
-        </div>
-        <div>
-            {buildMineralHTML()}
+            ${governorsHTML}
+            ${buildFacilityDropdown}
             <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
