@@ -1,4 +1,4 @@
-import { getFacilities } from "./database.js";
+import { getFacilities, getMineralTypes, getMinerals } from "./database.js";
 
 // Gets the list of facilities
 
@@ -21,9 +21,22 @@ const getRandomNum = () => {
     RETURN built facility dropdown html
 */
 
+document.addEventListener("change", (event) => {
+  if (event.target.name === "facility") {
+    const FacilityMineralsDocument = document.querySelector(
+      "#facilityMineralsDocument"
+    );
+    const specificFacilityNum = event.target.id;
+    let htmlForMinerals = facilityMaterialGenerator(
+      parseInt(specificFacilityNum)
+    );
+    FacilityMineralsDocument.innerHTML = htmlForMinerals;
+  }
+});
+
 export const buildFacilityDropdown = () => {
   let buildFacilityHTML = ` <label> Choose a facility </label>
-                              <select>
+                              <select name="facility">
                                 <option> -- Choose Facility -- </option>`;
   for (const facility of allFacilities) {
     let randomNum = getRandomNum();
@@ -48,14 +61,10 @@ export const buildFacilityDropdown = () => {
 /*
     There will be a section below this with an h1 saying 'Facility Minerals'
     below that will be the radio buttons yet to be mentioned
-        This section could possibly be built as so... `
-                                                    <section class="availableMinerals">
-                                                        <h1></h1>
-                                                    </section>
-                                                    `
+
         It's important to mention that when the facility is selected from the dropdown-
         the h1 from this section should be updated to include 'for ${Name}'
-                                        
+    cons
 
     Next I want to think about importing the list of availableMinerals
         then a function with a for of loop to iterate throught the availableMinerals.
@@ -63,3 +72,27 @@ export const buildFacilityDropdown = () => {
             facility ID property IF SO build html for displaying radio menu options for the amount of
             minerals. DISPLAYED AS '90 tons of Chromium'...
 */
+const facilityMaterialGenerator = (facilityId) => {
+  let radioButtonHTML = ``;
+  let mineralArray = [];
+  for (const minerals of getMinerals()) {
+    if (minerals.facilityId == facilityId) {
+      mineralArray.push(minerals);
+    }
+  }
+  for (const facilitySpecificMinerals of mineralArray) {
+    for (const allMineralTypes of getMineralTypes()) {
+      if (facilitySpecificMinerals.mineralTypeId == allMineralTypes.id) {
+        radioButtonHTML += `
+          <input
+            type="radio"
+            name="facilityMaterial"
+            data-matFacId="${facilitySpecificMinerals.id}"
+            data-mineralTypeId="${allMineralTypes.id}"
+          >${facilitySpecificMinerals.amount} Tons of ${allMineralTypes.name}</input>
+        `;
+      }
+    }
+  }
+  return radioButtonHTML;
+};
