@@ -12,7 +12,7 @@ const database = {
     { id: 10, Colony: "Alpha Centauri Bb" },
   ],
   purchasedMinerals: [],
-  avaulableMinerals: [
+  availableMinerals: [
     { id: 1, mineralTypeId: 1, amount: 10, facilityId: 5 },
     { id: 2, mineralTypeId: 2, amount: 90, facilityId: 7 },
     { id: 3, mineralTypeId: 3, amount: 30, facilityId: 1 },
