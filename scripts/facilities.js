@@ -27,7 +27,9 @@ document.addEventListener("change", (event) => {
       "#facilityMineralsDocument"
     );
     const specificFacilityNum = event.target.id;
-    let htmlForMinerals = facilityMaterialGenerator(specificFacilityNum);
+    let htmlForMinerals = facilityMaterialGenerator(
+      parseInt(specificFacilityNum)
+    );
     FacilityMineralsDocument.innerHTML = htmlForMinerals;
   }
 });
@@ -87,7 +89,7 @@ const facilityMaterialGenerator = (facilityId) => {
             name="facilityMaterial"
             data-matFacId="${facilitySpecificMinerals.id}"
             data-mineralTypeId="${allMineralTypes.id}"
-          >${facilitySpecificMinerals.amount} Tons of ${allMineralTypes.nam}</input>
+          >${facilitySpecificMinerals.amount} Tons of ${allMineralTypes.name}</input>
         `;
       }
     }
