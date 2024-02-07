@@ -119,5 +119,13 @@ export const getGoverners = () => {
 };
 
 export const getMinerals = () => {
-  return database.AvailableMineral.map((text) => ({ ...text }));
+  return database.availableMinerals.map((text) => ({ ...text }));
+};
+
+export const getMineralTypes = () => {
+  return database.MineralTypes.map((text) => ({ ...text }));
+};
+
+export const getPurchases = () => {
+  return database.purchasedMinerals.map((text) => ({ ...text }));
 };
