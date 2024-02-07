@@ -7,9 +7,11 @@ const createPage = () => {
   <h1>Exomine Mining Market Place</h1>
     <div id="mainContainer">
         <div id="choicesDropdownContainer">
-            <div id="peoplePlanets">
+            <div id="governorsAndColonies">
                 <section>
                     ${governorsHTML()}
+                    <article id="importedColony">
+                    </article>
                 </section>
                 <section>
                     {addMinerals()}
