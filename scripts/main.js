@@ -1,10 +1,10 @@
 import { buildFacilityDropdown } from "./facilities.js";
 import { governorsHTML } from "./governors.js";
-import {governorChoiceChange} from "./colonyMinerals.js"
+import { governorChoiceChange } from "./colonyMinerals.js";
 import { showAvailableMinerals } from "./availableMinerals.js";
 
-document.addEventListener("change", governorChoiceChange)
-document.addEventListener("change", showAvailableMinerals)
+document.addEventListener("change", governorChoiceChange);
+document.addEventListener("change", showAvailableMinerals);
 const createPage = () => {
   const documentHTML = document.querySelector(`#ContainerJS`);
   const pageHtml = `
@@ -14,12 +14,12 @@ const createPage = () => {
             ${governorsHTML()}
             <article id="colonyMinerals"></article>
             ${buildFacilityDropdown()}
-            <article id='facilityMineralsDocument'></article>
+            <article id='facilityMineralsDocument'><h2>Facility Minerals</h2></article>
             <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
     `;
-  documentHTML.innerHTML = pageHtml;
+  documentHTML.innerHTML += pageHtml;
 };
 
 createPage();
