@@ -9,6 +9,7 @@ const createPage = () => {
         <div id="choicesDropdownContainer">
             ${governorsHTML}
             ${buildFacilityDropdown}
+            <article id="facilityMineralsDocument"></article>
             <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
