@@ -1,4 +1,4 @@
-import { getFacilities, getMineralTypes, getMinerals } from "./database.js";
+import { getFacilities } from "./database.js";
 
 // Gets the list of facilities
 
@@ -21,23 +21,10 @@ const getRandomNum = () => {
     RETURN built facility dropdown html
 */
 
-document.addEventListener("change", (event) => {
-  if (event.target.name === "facility") {
-    const FacilityMineralsDocument = document.querySelector(
-      "#facilityMineralsDocument"
-    );
-    const specificFacilityNum = event.target.id;
-    let htmlForMinerals = facilityMaterialGenerator(
-      parseInt(specificFacilityNum)
-    );
-    FacilityMineralsDocument.innerHTML = htmlForMinerals;
-  }
-});
-
 export const buildFacilityDropdown = () => {
   let buildFacilityHTML = ` <label> Choose a facility </label>
                               <select name="facility">
-                                <option> -- Choose Facility -- </option>`;
+                                <option value='' selected disabled hidden> -- Choose Facility -- </option>`;
   for (const facility of allFacilities) {
     let randomNum = getRandomNum();
     facility.staff = randomNum;
@@ -57,21 +44,20 @@ export const buildFacilityDropdown = () => {
   return buildFacilityHTML;
 };
 
-//   ----- PLANNING -----
-/*
-    There will be a section below this with an h1 saying 'Facility Minerals'
-    below that will be the radio buttons yet to be mentioned
-
-        It's important to mention that when the facility is selected from the dropdown-
-        the h1 from this section should be updated to include 'for ${Name}'
-    cons
-
-    Next I want to think about importing the list of availableMinerals
-        then a function with a for of loop to iterate throught the availableMinerals.
-            the loop will have an if conditional to check if availableMineral facilityID property is equal to 
-            facility ID property IF SO build html for displaying radio menu options for the amount of
-            minerals. DISPLAYED AS '90 tons of Chromium'...
-*/
+// Event Listener for when, Facilities are Changed
+document.addEventListener("change", (event) => {
+  if (event.target.name === "facility") {
+    const FacilityMineralsDocument = document.querySelector(
+      "#facilityMineralsDocument"
+    );
+    const specificFacilityNum = event.target.id;
+    let htmlForMinerals = facilityMaterialGenerator(
+      parseInt(specificFacilityNum)
+    );
+    FacilityMineralsDocument.innerHTML = htmlForMinerals;
+  }
+});
+// Function to Display every Material related to said Function
 const facilityMaterialGenerator = (facilityId) => {
   let radioButtonHTML = ``;
   let mineralArray = [];
