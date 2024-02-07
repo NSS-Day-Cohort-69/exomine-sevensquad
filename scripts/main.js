@@ -7,9 +7,8 @@ const createPage = () => {
   <h1>Exomine Mining Market Place</h1>
     <div id="mainContainer">
         <div id="choicesDropdownContainer">
-            ${governorsHTML}
-            ${buildFacilityDropdown}
-            <article id="facilityMineralsDocument"></article>
+            ${governorsHTML()}
+            ${buildFacilityDropdown()}
             <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
