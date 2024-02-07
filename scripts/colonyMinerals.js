@@ -3,13 +3,15 @@ import { getPurchases, getColonies } from "./database.js"
 const colonies = getColonies()
 const purchases = getPurchases()
 
-const governorChoiceChange  = (changeEvent) => {
+export const governorChoiceChange  = (changeEvent) => {
     if(changeEvent.target.type === "governor") {
         const governorColonyId = changeEvent.dataset.colonyid
-        addMineralsHTML(parseInt(governorColonyId))
+        const colonyMineralHTML = document.querySelector("#colonyMinerals")
+        colonyMineralHTML.innerHTML = addMineralsHTML(parseInt(governorColonyId))
+
     }
 }
-document.addEventListener("change", governorChoiceChange)
+
 
 
 const addMineralsHTML = (governorColonyId) => {
@@ -22,5 +24,5 @@ const addMineralsHTML = (governorColonyId) => {
         //     htmlString += ``
         // }
     }
-    
+    return htmlString
 }
