@@ -22,7 +22,7 @@ const getRandomNum = () => {
 */
 
 export const buildFacilityDropdown = () => {
-  let buildFacilityHTML = ` <label> Choose a facility: </label>
+  let buildFacilityHTML = ` <label> Choose a facility </label>
                               <select>
                                 <option> -- Choose Facility -- </option>`;
   for (const facility of allFacilities) {
