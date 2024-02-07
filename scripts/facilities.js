@@ -37,7 +37,7 @@ document.addEventListener("change", (event) => {
 export const buildFacilityDropdown = () => {
   let buildFacilityHTML = ` <label> Choose a facility </label>
                               <select name="facility">
-                                <option> -- Choose Facility -- </option>`;
+                                <option value='' selected disabled hidden> -- Choose Facility -- </option>`;
   for (const facility of allFacilities) {
     let randomNum = getRandomNum();
     facility.staff = randomNum;
