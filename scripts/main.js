@@ -31,7 +31,7 @@ const createPage = () => {
     </div>
     `;
   documentHTML.innerHTML = pageHtml;
-  document.addEventListener("Regenerate", createPage);
+  document.addEventListener("Regenerate", createPage); // Person Listening for word Regenerate
 };
 
 createPage();

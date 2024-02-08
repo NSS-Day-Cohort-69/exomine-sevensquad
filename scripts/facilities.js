@@ -28,7 +28,7 @@ export const buildFacilityDropdown = () => {
   for (const facility of allFacilities) {
     let randomNum = getRandomNum();
     facility.staff = randomNum;
-    if (facility.staff < 2000) {
+    if (facility.staff < 0) {
       facility.isActive = false;
       buildFacilityHTML += `<option disabled='true' value='${facility.id}'
          data-type='facility' data-name='${facility.name}'>
