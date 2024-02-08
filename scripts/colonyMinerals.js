@@ -1,15 +1,27 @@
-import { getPurchases, getColonies, getMineralTypes } from "./database.js";
+import {
+  getPurchases,
+  getColonies,
+  getMineralTypes,
+  setTransientStateColony,
+} from "./database.js";
 
 const colonies = getColonies();
 const purchases = getPurchases();
 const minerals = getMineralTypes();
-
+//This changes the HTML
 export const governorChoiceChange = (changeEvent) => {
-  console.log(changeEvent);
   if (changeEvent.target.name == "governor-names") {
     const governorColonyId = changeEvent.target.value;
     const colonyMineralHTML = document.querySelector("#colonyMinerals");
     colonyMineralHTML.innerHTML = addMineralsHTML(parseInt(governorColonyId));
+  }
+};
+
+export const purchasedColonyChanged = (changeEvent) => {
+  if (changeEvent.target.name == "governor-names") {
+    const targetedValue = changeEvent.target.value;
+    console.log(targetedValue);
+    setTransientStateColony(parseInt(targetedValue));
   }
 };
 
