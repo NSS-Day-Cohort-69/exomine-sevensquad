@@ -1,10 +1,21 @@
 import { buildFacilityDropdown } from "./facilities.js";
 import { governorsHTML } from "./governors.js";
-import { governorChoiceChange } from "./colonyMinerals.js";
-import { showAvailableMinerals } from "./availableMinerals.js";
+import {
+  governorChoiceChange,
+  purchasedColonyChanged,
+} from "./colonyMinerals.js";
+import {
+  purchasedMineralsChanged,
+  showAvailableMinerals,
+} from "./availableMinerals.js";
+import { purchaseButtonClicked } from "./database.js";
 
 document.addEventListener("change", governorChoiceChange);
 document.addEventListener("change", showAvailableMinerals);
+document.addEventListener("change", purchasedMineralsChanged);
+purchaseButtonClicked();
+document.addEventListener("change", purchasedColonyChanged);
+
 const createPage = () => {
   const documentHTML = document.querySelector(`#ContainerJS`);
   const pageHtml = `

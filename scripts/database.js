@@ -11,7 +11,7 @@ const database = {
     { id: 9, name: "Earth" },
     { id: 10, name: "Alpha Centauri Bb" },
   ],
-  purchasedMinerals: [{id: 1, colondyId: 8, mineralTypeId: 4}],
+  purchasedMinerals: [],
   availableMinerals: [
     { id: 1, mineralTypeId: 1, amount: 10, facilityId: 5 },
     { id: 2, mineralTypeId: 2, amount: 90, facilityId: 7 },
@@ -32,15 +32,15 @@ const database = {
     { id: 17, mineralTypeId: 17, amount: 11, facilityId: 2 },
     { id: 18, mineralTypeId: 18, amount: 62, facilityId: 7 },
     { id: 19, mineralTypeId: 19, amount: 10, facilityId: 6 },
-    { id: 20, mineralTypeId: 20, amount: 2, facilityId: 6 },
-    { id: 21, mineralTypeId: 21, amount: 100, facilityId: 6 },
-    { id: 22, mineralTypeId: 22, amount: 61, facilityId: 2 },
-    { id: 23, mineralTypeId: 23, amount: 86, facilityId: 1 },
-    { id: 24, mineralTypeId: 24, amount: 14, facilityId: 5 },
-    { id: 25, mineralTypeId: 25, amount: 39, facilityId: 5 },
-    { id: 26, mineralTypeId: 26, amount: 12, facilityId: 5 },
-    { id: 27, mineralTypeId: 27, amount: 22, facilityId: 1 },
-    { id: 28, mineralTypeId: 28, amount: 10, facilityId: 1 },
+    { id: 20, mineralTypeId: 6, amount: 2, facilityId: 6 },
+    { id: 21, mineralTypeId: 3, amount: 100, facilityId: 6 },
+    { id: 22, mineralTypeId: 8, amount: 61, facilityId: 2 },
+    { id: 23, mineralTypeId: 20, amount: 86, facilityId: 1 },
+    { id: 24, mineralTypeId: 10, amount: 14, facilityId: 5 },
+    { id: 25, mineralTypeId: 21, amount: 39, facilityId: 5 },
+    { id: 26, mineralTypeId: 22, amount: 12, facilityId: 5 },
+    { id: 27, mineralTypeId: 23, amount: 22, facilityId: 1 },
+    { id: 28, mineralTypeId: 14, amount: 10, facilityId: 1 },
   ],
   MineralTypes: [
     { id: 1, name: "Quartz" },
@@ -62,15 +62,10 @@ const database = {
     { id: 17, name: "Dolomite" },
     { id: 18, name: "Graphite" },
     { id: 19, name: "Jasper" },
-    { id: 20, name: "Gypsum" },
-    { id: 21, name: "Iron" },
-    { id: 22, name: "Mica" },
-    { id: 23, name: "Orthoclase" },
-    { id: 24, name: "Copper" },
-    { id: 25, name: "Peridot" },
-    { id: 26, name: "Lapis Lazuli" },
-    { id: 27, name: "Rhodonite" },
-    { id: 28, name: "Garnet" },
+    { id: 20, name: "Orthoclase" },
+    { id: 21, name: "Peridot" },
+    { id: 22, name: "Lapis Lazuli" },
+    { id: 23, name: "Rhodonite" },
   ],
   Facilities: [
     { id: 1, name: "Coal'n Co.", isActive: true },
@@ -128,4 +123,49 @@ export const getMineralTypes = () => {
 
 export const getPurchases = () => {
   return database.purchasedMinerals.map((text) => ({ ...text }));
+};
+
+export const getTransientState = () => {
+  return database.transientState;
+};
+
+export const setTransientStateMinerals = (num) => {
+  for (const allMinerals of getMinerals()) {
+    if (allMinerals.id == num) {
+      database.transientState.availableMineralId = allMinerals.id;
+      database.transientState.mineralTypeId = allMinerals.mineralTypeId;
+    }
+  }
+};
+
+export const setTransientStateColony = (num) => {
+  database.transientState.ColonyId = num;
+};
+
+export const purchaseButtonClicked = () => {
+  document.addEventListener("click", (event) => {
+    if (event.target.id == "purchase") {
+      if (JSON.stringify(database.transientState) !== "{}") {
+        const purchase = getPurchases();
+        database.transientState.id = purchase.length + 1;
+        database.transientState.amount = 1;
+        // 153 No duplicants
+        for (const purchasedThing of getPurchases()) {
+          if (
+            purchasedThing.ColonyId == database.transientState.ColonyId &&
+            purchasedThing.mineralTypeId ==
+              database.transientState.mineralTypeId
+          ) {
+            database.purchasedMinerals[purchasedThing.id - 1].amount++;
+            database.transientState = {};
+            console.log(database.transientState);
+          }
+        }
+        if (JSON.stringify(database.transientState) !== "{}") {
+          database.purchasedMinerals.push(database.transientState);
+          database.transientState = {};
+        }
+      }
+    }
+  });
 };

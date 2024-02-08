@@ -1,25 +1,16 @@
-import { getFacilities, getMinerals, getMineralTypes } from "./database.js";
+import {
+  getFacilities,
+  getMinerals,
+  getMineralTypes,
+  setTransientStateMinerals,
+} from "./database.js";
 
-const mineralList = getMinerals();
-
-// export const buildMineralHTML = () => {
-
-//     let generateMineralHTML = `<div id="mineralDisplay">`
-//     let incrementCounter = 1
-//     for (const mineral of mineralList) {
-//         generateMineralHTML += `<input type='radio'
-//         id='${incrementCounter}'
-//         name='mineralChoice'
-//         value='${mineral.name}'
-//         data-id='${mineral.id}'
-//         data-facilityId='${mineral.facilityId}'>
-//         <label>${mineral.amount} tons of ${mineral.name}</label>`
-//         incrementCounter++
-//     }
-//     generateMineralHTML += `</div>`
-// return generateMineralHTML
-
-// }
+export const purchasedMineralsChanged = (changeEvent) => {
+  if (changeEvent.target.name === "facilityMaterial") {
+    const targetedValue = changeEvent.target.value;
+    setTransientStateMinerals(parseInt(targetedValue));
+  }
+};
 
 export const showAvailableMinerals = (event) => {
   if (event.target.name === "facility") {
@@ -47,16 +38,16 @@ const facilityMaterialGenerator = (facilityId) => {
       mineralArray.push(minerals);
     }
   }
-  for (const facilitySpecificMinerals of mineralArray) {
+  for (const availableMineral of mineralArray) {
     for (const allMineralTypes of getMineralTypes()) {
-      if (facilitySpecificMinerals.mineralTypeId == allMineralTypes.id) {
+      if (availableMineral.mineralTypeId == allMineralTypes.id) {
         radioButtonHTML += `
             <input
               type="radio"
               name="facilityMaterial"
-              data-matFacId="${facilitySpecificMinerals.id}"
+              value="${availableMineral.id}"
               data-mineralTypeId="${allMineralTypes.id}"
-            >${facilitySpecificMinerals.amount} Tons of ${allMineralTypes.name}</input>
+            >${availableMineral.amount} Tons of ${allMineralTypes.name}</input>
           `;
       }
     }
