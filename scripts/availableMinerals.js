@@ -29,27 +29,27 @@ export const showAvailableMinerals = (event) => {
 
 const facilityMaterialGenerator = (facilityId) => {
   let radioButtonHTML = ``;
-  for (const allFacilities of getFacilities()) {
-    if (allFacilities.id === facilityId) {
-      radioButtonHTML += `<h2>Facility Minerals for ${allFacilities.name}</h2>`;
+  for (const facility of getFacilities()) {
+    if (facility.id === facilityId) {
+      radioButtonHTML += `<h2>Facility Minerals for ${facility.name}</h2>`;
     }
   }
   let mineralArray = [];
-  for (const minerals of getMinerals()) {
-    if (minerals.facilityId == facilityId) {
-      mineralArray.push(minerals);
+  for (const mineral of getMinerals()) {
+    if (mineral.facilityId == facilityId) {
+      mineralArray.push(mineral);
     }
   }
   for (const availableMineral of mineralArray) {
-    for (const allMineralTypes of getMineralTypes()) {
-      if (availableMineral.mineralTypeId == allMineralTypes.id) {
+    for (const mineralType of getMineralTypes()) {
+      if (availableMineral.mineralTypeId == mineralType.id) {
         radioButtonHTML += `
             <input
               type="radio"
               name="facilityMaterial"
               value="${availableMineral.id}"
-              data-mineralTypeId="${allMineralTypes.id}"
-            >${availableMineral.amount} Tons of ${allMineralTypes.name}</input>
+              data-mineralTypeId="${mineralType.id}"
+            >${availableMineral.amount} Tons of ${mineralType.name}</input>
           `;
       }
     }
