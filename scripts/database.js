@@ -143,6 +143,7 @@ export const setTransientStateColony = (num) => {
 };
 
 export const purchaseButtonClicked = () => {
+  const customEvent = new CustomEvent("Regenerate");
   document.addEventListener("click", (event) => {
     if (event.target.id == "purchase") {
       if (JSON.stringify(database.transientState) !== "{}") {
@@ -166,6 +167,7 @@ export const purchaseButtonClicked = () => {
           database.transientState = {};
         }
       }
+      document.dispatchEvent(customEvent);
     }
   });
 };
