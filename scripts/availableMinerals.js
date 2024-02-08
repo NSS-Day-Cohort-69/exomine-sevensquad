@@ -1,3 +1,4 @@
+import { shoppingCart } from "./SpacePurchase.js";
 import {
   getFacilities,
   getMinerals,
@@ -9,6 +10,7 @@ export const purchasedMineralsChanged = (changeEvent) => {
   if (changeEvent.target.name === "facilityMaterial") {
     const targetedValue = changeEvent.target.value;
     setTransientStateMinerals(parseInt(targetedValue));
+    shoppingCart(parseInt(targetedValue));
   }
 };
 

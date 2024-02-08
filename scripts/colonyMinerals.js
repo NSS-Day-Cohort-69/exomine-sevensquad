@@ -26,17 +26,25 @@ export const purchasedColonyChanged = (changeEvent) => {
 };
 
 const addMineralsHTML = (governorColonyId) => {
-  let htmlString = "";
+  let htmlString = "<div>";
   for (const colony of colonies) {
     if (governorColonyId === colony.id) {
       htmlString += `<h2 id="governorColony">${colony.name} Minerals</h2>`;
-    }
-    for (const allPurchases of purchases) {
-      const FilteredPurchases = [];
-      if (allPurchases.colondyId == colony.id) {
-        FilteredPurchases.push(allPurchases);
+      for (const allPurchases of getPurchases()) {
+        const FilteredPurchases = [];
+        if (allPurchases.ColonyId == colony.id) {
+          FilteredPurchases.push(allPurchases);
+        }
+        for (const allMinerals of getMineralTypes()) {
+          for (const Filtered of FilteredPurchases) {
+            if (Filtered.mineralTypeId == allMinerals.id) {
+              htmlString += `<article class="colonyMineralList">${Filtered.amount} tons of ${allMinerals.name}</article>`;
+            }
+          }
+        }
       }
     }
   }
+  htmlString += `</div>`;
   return htmlString;
 };

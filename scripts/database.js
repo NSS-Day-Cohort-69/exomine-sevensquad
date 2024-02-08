@@ -143,12 +143,28 @@ export const setTransientStateColony = (num) => {
 };
 
 export const purchaseButtonClicked = () => {
+  const customEvent = new CustomEvent("Regenerate");
   document.addEventListener("click", (event) => {
     if (event.target.id == "purchase") {
       if (JSON.stringify(database.transientState) !== "{}") {
         const purchase = getPurchases();
         database.transientState.id = purchase.length + 1;
         database.transientState.amount = 1;
+        for (const purchasedThing of getPurchases()) {
+          if (
+            purchasedThing.ColonyId != database.transientState.ColonyId &&
+            purchasedThing.mineralTypeId !=
+              database.transientState.mineralTypeId
+          ) {
+            for (const allMinerals of getMinerals()) {
+              if (
+                allMinerals.id == database.transientState.availableMineralId
+              ) {
+                database.availableMinerals[allMinerals.id - 1].amount--;
+              }
+            }
+          }
+        }
         // 153 No duplicants
         for (const purchasedThing of getPurchases()) {
           if (
@@ -157,15 +173,23 @@ export const purchaseButtonClicked = () => {
               database.transientState.mineralTypeId
           ) {
             database.purchasedMinerals[purchasedThing.id - 1].amount++;
+            for (const allMinerals1 of getMinerals()) {
+              if (
+                allMinerals1.id == database.transientState.availableMineralId
+              ) {
+                database.availableMinerals[allMinerals1.id - 1].amount--;
+              }
+            }
             database.transientState = {};
-            console.log(database.transientState);
           }
         }
         if (JSON.stringify(database.transientState) !== "{}") {
           database.purchasedMinerals.push(database.transientState);
           database.transientState = {};
+          console.log(database.availableMinerals);
         }
       }
+      document.dispatchEvent(customEvent); // Person yelling the word Regenerate
     }
   });
 };
