@@ -30,15 +30,15 @@ const addMineralsHTML = (governorColonyId) => {
   for (const colony of colonies) {
     if (governorColonyId === colony.id) {
       htmlString += `<h2 id="governorColony">${colony.name} Minerals</h2>`;
-      for (const allPurchases of getPurchases()) {
+      for (const purchase of getPurchases()) {
         const FilteredPurchases = [];
-        if (allPurchases.ColonyId == colony.id) {
-          FilteredPurchases.push(allPurchases);
+        if (purchase.ColonyId == colony.id) {
+          FilteredPurchases.push(purchase);
         }
-        for (const allMinerals of getMineralTypes()) {
-          for (const Filtered of FilteredPurchases) {
-            if (Filtered.mineralTypeId == allMinerals.id) {
-              htmlString += `<article class="colonyMineralList">${Filtered.amount} tons of ${allMinerals.name}</article>`;
+        for (const mineralType of getMineralTypes()) {
+          for (const purchase of FilteredPurchases) {
+            if (purchase.mineralTypeId == mineralType.id) {
+              htmlString += `<article class="colonyMineralList">${purchase.amount} tons of ${mineralType.name}</article>`;
             }
           }
         }
