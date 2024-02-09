@@ -9,7 +9,6 @@ import {
 document.addEventListener("change", (changeEvent) => {
   if (changeEvent.target.name == "governor-names") {
     setTransientColony(parseInt(changeEvent.target.value));
-    console.log(changeEvent.target.value);
   }
 });
 
