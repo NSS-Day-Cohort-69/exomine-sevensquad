@@ -34,6 +34,7 @@ export const facilityMaterialGenerator = (facilityId) => {
       if (availableMineral.mineralTypeId == mineralType.id) {
         radioButtonHTML += `
             <input
+              class="keep-options-grouped"
               type="radio"
               name="facilityMaterial"
               value="${availableMineral.id}"
