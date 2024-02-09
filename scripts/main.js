@@ -1,6 +1,8 @@
+import { PurchaseButton } from "./SpacePurchase.js";
 import { buildFacilityDropdown } from "./facilities.js";
 import { buildGovernorsHTML } from "./governors.js";
 
+PurchaseButton();
 // This is a function to create the HTML for our page
 const createPage = () => {
   const documentHTML = document.querySelector(`#ContainerJS`);

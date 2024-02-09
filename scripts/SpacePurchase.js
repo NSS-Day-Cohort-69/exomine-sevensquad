@@ -1,4 +1,19 @@
-import { getMineralTypes, getMinerals } from "./database.js";
+import { getMineralTypes, getMinerals, getTransientState } from "./database.js";
+
+// shows the shopping carts current item
+export const PurchaseButton = () => {
+  document.addEventListener("click", (clickEvent) => {
+    if (clickEvent.target.id == "purchase") {
+      const TransientStateVariable = getTransientState();
+      console.log(TransientStateVariable);
+      if (
+        TransientStateVariable.hasOwnProperty("availableMineralsId") &&
+        TransientStateVariable.hasOwnProperty("colonyId")
+      ) {
+      }
+    }
+  });
+};
 
 export const shoppingCart = (availableMineralId) => {
   const cartElement = document.querySelector("#cartDisplay");
