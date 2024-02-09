@@ -132,8 +132,9 @@ export const getTransientState = () => {
 export const setTransientMinerals = (num) => {
   for (const mineral of getMinerals()) {
     if (mineral.id == num) {
-      database.transientState.availableMinerals = mineral.id;
+      database.transientState.availableMineralsId = mineral.id;
       database.transientState.mineralTypeId = mineral.mineralTypeId;
+      database.transientState.facilityId = mineral.facilityId;
     }
   }
 };
@@ -145,5 +146,3 @@ export const setTransientColony = (num) => {
     }
   }
 };
-
-export const purchaseButtonClicked = () => {};
