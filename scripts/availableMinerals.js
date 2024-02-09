@@ -4,6 +4,7 @@ import {
   getMinerals,
   getMineralTypes,
   setTransientMinerals,
+  getTransientState
 } from "./database.js";
 
 // Listens for a change from the chosen Material and sets Transient State to the Material
@@ -12,6 +13,7 @@ document.addEventListener("change", (changeEvent) => {
     setTransientMinerals(parseInt(changeEvent.target.value));
     shoppingCart(parseInt(changeEvent.target.value));
     console.log(changeEvent.target.value);
+    console.log(getTransientState())
   }
 });
 

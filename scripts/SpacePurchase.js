@@ -1,19 +1,26 @@
-import { getMineralTypes, getMinerals, getTransientState } from "./database.js";
+import { getMineralTypes, getMinerals, getTransientState, getPurchases, addPurchasedObject, setTransientMinerals } from "./database.js";
+
+const purchases = getPurchases()
+
 
 // shows the shopping carts current item
 export const PurchaseButton = () => {
   document.addEventListener("click", (clickEvent) => {
     if (clickEvent.target.id == "purchase") {
-      const TransientStateVariable = getTransientState();
+      let TransientStateVariable = getTransientState();
       console.log(TransientStateVariable);
-      if (
-        TransientStateVariable.hasOwnProperty("availableMineralsId") &&
-        TransientStateVariable.hasOwnProperty("colonyId")
-      ) {
+      if (TransientStateVariable.hasOwnProperty("availableMineralsId") && TransientStateVariable.hasOwnProperty("colonyId")) {
+        let clonedTransientState = structuredClone(TransientStateVariable)
+        pushMineralToArray(purchases, clonedTransientState)
+        TransientStateVariable = {}
+        
+        console.log(purchases)
+      } 
       }
-    }
-  });
-};
+    })
+  };
+
+  
 
 export const shoppingCart = (availableMineralId) => {
   const cartElement = document.querySelector("#cartDisplay");
@@ -30,3 +37,10 @@ export const shoppingCart = (availableMineralId) => {
     }
   }
 };
+
+
+const pushMineralToArray = (arr, newObject) => {
+  if (!arr.some(obj => obj.mineralTypeId === newObject.mineralTypeId)) {
+    addPurchasedObject(newObject)
+  }
+}

@@ -146,3 +146,8 @@ export const setTransientColony = (num) => {
     }
   }
 };
+
+export const addPurchasedObject = (object) => {
+  database.purchasedMinerals.push(object);
+  console.log(database.purchasedMinerals);
+};
