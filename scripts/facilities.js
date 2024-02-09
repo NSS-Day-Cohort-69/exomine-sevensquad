@@ -1,8 +1,19 @@
-import { getFacilities, getMinerals, getMineralTypes } from "./database.js";
+import { getFacilities } from "./database.js";
+import { facilityMaterialGenerator } from "./availableMinerals.js";
 
-// Gets the list of facilities
-
-const allFacilities = getFacilities();
+// If the dropdown is changed then display the respective materials for the aforementioned
+document.addEventListener("change", (changeEvent) => {
+  if (changeEvent.target.name === "facility") {
+    const FacilityMineralsDocument = document.querySelector(
+      "#facilityMineralsDocument"
+    );
+    const specificFacilityNum = changeEvent.target.value;
+    let htmlForMinerals = facilityMaterialGenerator(
+      parseInt(specificFacilityNum)
+    );
+    FacilityMineralsDocument.innerHTML = htmlForMinerals;
+  }
+});
 
 //This gets a random number that is then given in the facility dropdown function
 
@@ -11,21 +22,17 @@ const getRandomNum = () => {
   return randomToSxThou;
 };
 
-/*
- Function that iterates through the Facilities array and generates the html facility dropdown
-  with the data and names of the facilities.
- Also creates and assigns the staff property randomly up to 6000. 
- IF CONDITIONAL to check WHETHER staff property is less than 2000.
-  IF SO: set isActive property to false. THEN: create option button with disabled property equal to true.
-   ELSE create option button normally.
-    RETURN built facility dropdown html
-*/
-
+// Builds Dropdown
 export const buildFacilityDropdown = () => {
-  let buildFacilityHTML = ` <label> Choose a facility </label>
-                              <select name="facility">
-                                <option value='' selected disabled hidden>Choose a facility...</option>`;
-  for (const facility of allFacilities) {
+  let buildFacilityHTML = ` 
+  <label> 
+    Choose a facility 
+  </label>
+    <select name="facility">
+      <option value='' selected disabled hidden>
+        Choose a facility...
+          </option>`;
+  for (const facility of getFacilities()) {
     let randomNum = getRandomNum();
     facility.staff = randomNum;
     if (facility.staff < 0) {

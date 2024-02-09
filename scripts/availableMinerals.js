@@ -3,31 +3,20 @@ import {
   getFacilities,
   getMinerals,
   getMineralTypes,
-  setTransientStateMinerals,
+  setTransientMinerals,
 } from "./database.js";
 
-export const purchasedMineralsChanged = (changeEvent) => {
+// Listens for a change from the chosen Material and sets Transient State to the Material
+document.addEventListener("change", (changeEvent) => {
   if (changeEvent.target.name === "facilityMaterial") {
-    const targetedValue = changeEvent.target.value;
-    setTransientStateMinerals(parseInt(targetedValue));
-    shoppingCart(parseInt(targetedValue));
+    setTransientMinerals(parseInt(changeEvent.target.value));
+    shoppingCart(parseInt(changeEvent.target.value));
+    console.log(changeEvent.target.value);
   }
-};
+});
 
-export const showAvailableMinerals = (event) => {
-  if (event.target.name === "facility") {
-    const FacilityMineralsDocument = document.querySelector(
-      "#facilityMineralsDocument"
-    );
-    const specificFacilityNum = event.target.value;
-    let htmlForMinerals = facilityMaterialGenerator(
-      parseInt(specificFacilityNum)
-    );
-    FacilityMineralsDocument.innerHTML = htmlForMinerals;
-  }
-};
-
-const facilityMaterialGenerator = (facilityId) => {
+// Generates the chosen facilities materials
+export const facilityMaterialGenerator = (facilityId) => {
   let radioButtonHTML = ``;
   for (const facility of getFacilities()) {
     if (facility.id === facilityId) {

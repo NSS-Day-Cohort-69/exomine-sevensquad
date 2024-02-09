@@ -2,32 +2,21 @@ import {
   getPurchases,
   getColonies,
   getMineralTypes,
-  setTransientStateColony,
+  setTransientColony,
 } from "./database.js";
 
-const colonies = getColonies();
-const purchases = getPurchases();
-const minerals = getMineralTypes();
-//This changes the HTML
-export const governorChoiceChange = (changeEvent) => {
+//This listens for a change to the governor and sets the Transient State to the aforementioned Governors Planet Note: This could be in the same module as Governors(Move SetState into the eventListener)
+document.addEventListener("change", (changeEvent) => {
   if (changeEvent.target.name == "governor-names") {
-    const governorColonyId = changeEvent.target.value;
-    const colonyMineralHTML = document.querySelector("#colonyMinerals");
-    colonyMineralHTML.innerHTML = addMineralsHTML(parseInt(governorColonyId));
+    setTransientColony(parseInt(changeEvent.target.value));
+    console.log(changeEvent.target.value);
   }
-};
+});
 
-export const purchasedColonyChanged = (changeEvent) => {
-  if (changeEvent.target.name == "governor-names") {
-    const targetedValue = changeEvent.target.value;
-    console.log(targetedValue);
-    setTransientStateColony(parseInt(targetedValue));
-  }
-};
-
-const addMineralsHTML = (governorColonyId) => {
+// Creates the Minerals relating to Governors Planets(Shows what they've bought)
+export const addMineralsHTML = (governorColonyId) => {
   let htmlString = "<div>";
-  for (const colony of colonies) {
+  for (const colony of getColonies()) {
     if (governorColonyId === colony.id) {
       htmlString += `<h2 id="governorColony">${colony.name} Minerals</h2>`;
       for (const purchase of getPurchases()) {
