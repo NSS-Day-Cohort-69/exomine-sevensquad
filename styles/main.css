@@ -1,6 +1,8 @@
 body {
     background-color: gray;
+    margin: 3% 10% 0px 10%
 }
+
 
 #governorsflex {
     display: flex;
@@ -15,7 +17,7 @@ body {
 }
 
 #facilityMineralsDocument {
-    display: flex;
+    text-align: center;
     border: dashed black 1px;
     width: 70vw;
     justify-content: center;
@@ -41,12 +43,7 @@ body {
     margin: 50px 0;
 }
 
-.facilityMineralsHeader {
-    display: inline;
-
-}
-
-.keep-options-grouped {
-    display: flex;
-    justify-content: center;
+#cartDisplay{
+    margin: 0px 10px 10px 0px;
+    text-align: center;
 }

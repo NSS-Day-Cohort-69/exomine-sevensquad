@@ -20,7 +20,8 @@ export const facilityMaterialGenerator = (facilityId) => {
   let radioButtonHTML = ``;
   for (const facility of getFacilities()) {
     if (facility.id === facilityId) {
-      radioButtonHTML += `<h2 class="facilityMineralsHeader">Facility Minerals for ${facility.name}</h2>`;
+      radioButtonHTML += `<h2 class="facilityMineralsHeader">Facility Minerals for ${facility.name}</h2>
+      <div class="mineralButtons">`;
     }
   }
   let mineralArray = [];
@@ -44,5 +45,6 @@ export const facilityMaterialGenerator = (facilityId) => {
       }
     }
   }
+  radioButtonHTML += `</div>`;
   return radioButtonHTML;
 };
