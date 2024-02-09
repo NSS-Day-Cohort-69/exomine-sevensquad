@@ -1,0 +1,15 @@
+#governorsflex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#facility-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#facilityMineralsDocument {
+    border: dashed black 1px;
+}
