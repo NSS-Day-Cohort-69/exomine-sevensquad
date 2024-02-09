@@ -1,3 +1,7 @@
+body {
+    background-color: gray;
+}
+
 #governorsflex {
     display: flex;
     flex-direction: row;
@@ -11,5 +15,38 @@
 }
 
 #facilityMineralsDocument {
+    display: flex;
     border: dashed black 1px;
+    width: 70vw;
+    justify-content: center;
+    height: 200px;
+    flex-wrap: wrap;
+    
+}
+
+#cart-flex{
+    display: flex;
+    border: 2px dashed salmon;
+    flex-direction: column;
+    width: 25vw;
+    align-items: center;
+}
+
+#purchase {
+    margin-bottom: 10px;
+    height: 50px;
+}
+
+#gov-section {
+    margin: 50px 0;
+}
+
+.facilityMineralsHeader {
+    display: inline;
+
+}
+
+.keep-options-grouped {
+    display: flex;
+    justify-content: center;
 }
