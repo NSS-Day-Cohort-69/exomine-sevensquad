@@ -135,6 +135,7 @@ export const setTransientMinerals = (num) => {
       database.transientState.availableMineralsId = mineral.id;
       database.transientState.mineralTypeId = mineral.mineralTypeId;
       database.transientState.facilityId = mineral.facilityId;
+      console.log(getPurchases());
     }
   }
 };

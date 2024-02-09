@@ -3,6 +3,7 @@ import {
   getFacilities,
   getMinerals,
   getMineralTypes,
+  getTransientState,
   setTransientMinerals,
   getTransientState
 } from "./database.js";
@@ -12,8 +13,12 @@ document.addEventListener("change", (changeEvent) => {
   if (changeEvent.target.name === "facilityMaterial") {
     setTransientMinerals(parseInt(changeEvent.target.value));
     shoppingCart(parseInt(changeEvent.target.value));
+<<<<<<< HEAD
     console.log(changeEvent.target.value);
     console.log(getTransientState())
+=======
+    console.log(getTransientState());
+>>>>>>> main
   }
 });
 

@@ -3,7 +3,7 @@ import { getMineralTypes, getMinerals, getTransientState, getPurchases, addPurch
 const purchases = getPurchases()
 
 
-// shows the shopping carts current item
+// Purchase Button
 export const PurchaseButton = () => {
   document.addEventListener("click", (clickEvent) => {
     if (clickEvent.target.id == "purchase") {
@@ -22,6 +22,7 @@ export const PurchaseButton = () => {
 
   
 
+// shows the shopping carts current item
 export const shoppingCart = (availableMineralId) => {
   const cartElement = document.querySelector("#cartDisplay");
   const myMinerals = getMinerals();
