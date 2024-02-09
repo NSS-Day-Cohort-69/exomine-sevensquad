@@ -135,6 +135,7 @@ export const setTransientMinerals = (num) => {
       database.transientState.availableMineralsId = mineral.id;
       database.transientState.mineralTypeId = mineral.mineralTypeId;
       database.transientState.facilityId = mineral.facilityId;
+      console.log(getPurchases());
     }
   }
 };
@@ -145,4 +146,9 @@ export const setTransientColony = (num) => {
       database.transientState.colonyId = num;
     }
   }
+};
+
+export const addPurchasedObject = (object) => {
+  database.purchasedMinerals.push(object);
+  console.log(database.purchasedMinerals);
 };
