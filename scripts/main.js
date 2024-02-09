@@ -12,6 +12,7 @@ const createPage = () => {
             <article id="colonyMinerals"></article>
             ${buildFacilityDropdown()}
             <article id='facilityMineralsDocument'><h2>Facility Minerals</h2></article>
+            <section id="cartDisplay"></section>
             <button id="purchase">Purchase Minerals!</button>
         </div>
     </div>
