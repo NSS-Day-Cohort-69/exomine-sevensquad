@@ -1,28 +1,14 @@
 import { buildFacilityDropdown } from "./facilities.js";
-import { governorsHTML } from "./governors.js";
-import {
-  governorChoiceChange,
-  purchasedColonyChanged,
-} from "./colonyMinerals.js";
-import {
-  purchasedMineralsChanged,
-  showAvailableMinerals,
-} from "./availableMinerals.js";
-import { purchaseButtonClicked } from "./database.js";
+import { buildGovernorsHTML } from "./governors.js";
 
-document.addEventListener("change", governorChoiceChange);
-document.addEventListener("change", showAvailableMinerals);
-document.addEventListener("change", purchasedMineralsChanged);
-purchaseButtonClicked();
-document.addEventListener("change", purchasedColonyChanged);
-
+// This is a function to create the HTML for our page
 const createPage = () => {
   const documentHTML = document.querySelector(`#ContainerJS`);
   const pageHtml = `
   <h1>Exomine Mining Market Place</h1>
     <div id="mainContainer">
         <div id="choicesDropdownContainer">
-            ${governorsHTML()}
+            ${buildGovernorsHTML()}
             <article id="colonyMinerals"></article>
             ${buildFacilityDropdown()}
             <article id='facilityMineralsDocument'><h2>Facility Minerals</h2></article>
@@ -31,7 +17,6 @@ const createPage = () => {
     </div>
     `;
   documentHTML.innerHTML = pageHtml;
-  document.addEventListener("Regenerate", createPage); // Person Listening for word Regenerate
 };
 
 createPage();
