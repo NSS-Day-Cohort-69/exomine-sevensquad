@@ -9,7 +9,7 @@ export const shoppingCart = (availableMineralId) => {
     if (mineral.id == availableMineralId) {
       for (const mineralType of myMineralTypes) {
         if (mineralType.id == mineral.mineralTypeId) {
-          cartElement.innerHTML = `<h2>Buying!</h2> 1 Ton of ${mineralType.name}`;
+          cartElement.innerHTML = `1 Ton of ${mineralType.name}`;
         }
       }
     }

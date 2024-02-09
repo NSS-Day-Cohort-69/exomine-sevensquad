@@ -20,6 +20,7 @@ const createPage = () => {
             
             <article id="cart-flex">
             <h2>Space Cart</h2>
+            <article id="cartDisplay"></article>
             <button id="purchase">Purchase Minerals!</button>
             </article>
 
